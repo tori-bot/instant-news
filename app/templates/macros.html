@@ -1,1 +1,15 @@
-{%  %}
+{% macro displaySources(sources_list) %}
+
+    {% for source in source_list %}
+
+    <div class="card" style="width: 18rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h3 class="card-title"> {{source.title}} | {{source.category}} </h3>
+          <p class="card-text"> {{source.description}} </p>
+          <a href="/source/{{source.url}} " class="btn btn-primary">Explore</a>
+        </div>
+      </div>
+    {% endfor %}
+{% endmacro %}
+
