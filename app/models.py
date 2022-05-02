@@ -15,13 +15,13 @@ class NewsSource:
 
 class NewsArticle:
     #class that defines news article objects
-    def __init__(self,source,author,title,url,image,description,created_time,content):
+    def __init__(self,source,author,title,url,image,description,published,content):
         self.source=source
         self.author=author
         self.title=title
         self.url=url
         self.image=image
         self.description=description
-        self.created_time=created_time
+        self.published=published
         self.content=content
 

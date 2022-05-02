@@ -23,10 +23,10 @@ def get_sources():
 
         if get_sources_response['sources']:
             news_sources_list=get_sources_response['sources']
-            sources_results=process_results(news_sources_list)
+            sources_results=process_source_results(news_sources_list)
         return sources_results
 
-def process_results(sources_list):
+def process_source_results(sources_list):
     #function processes seources results and transforns them to a list of objects
     sources_results=[]
 
@@ -44,7 +44,7 @@ def process_results(sources_list):
 
             sources_results.append(source)
 
-        return sources_results
+    return sources_results
 
 def get_trending(source):
     #function to get trending news in specific country
@@ -58,7 +58,29 @@ def get_trending(source):
 
         if get_trending_response['articles']:
             trending_list=get_trending_response['articles']
-            trending_results=process_results(trending_list)
+            trending_results=process_trending_results(trending_list)
+
+    return trending_results
+
+
+def process_trending_results(trending_list):
+    #function processes article results and transforms them to a list of objects
+    trending_results=[]
+
+    for trending in trending_list:
+        source=trending.get('source.name')
+        author=trending.get('author')
+        title=trending.get('title')
+        url=trending.get('url')
+        image=trending.get('urlToImage')
+        description=trending.get('description')
+        published=trending.get('publishedAt') 
+        content=trending.get('content')
+
+        if image:
+            trending_object=NewsArticle(source,author,title,url,image,description,published,content)
+
+            trending_results.append(trending_object)
 
     return trending_results
 
@@ -81,11 +103,32 @@ def get_article(source):
             url=article_response.get('url')
             image=article_response.get('urlToImage')
             content=article_response.get('content')
-            created_at =article_response.get('publishedAt')
+            published =article_response.get('publishedAt')
 
-            article=NewsArticle(source,author,title,url,image,description,created_at,content)
+            article=NewsArticle(source,author,title,url,image,description,published,content)
 
         return article
+
+def process_article_results(article_list):
+    #function to process article results and add them to a list
+    article_results=[]
+
+    for article in article_list:
+        source=article.get('source.name')
+        author=article.get('author')
+        title=article.get('title')
+        url=article.get('url')
+        image=article.get('urlToImage')
+        description=article.get('description')
+        published=article.get('publishedAt') 
+        content=article.get('content')
+        
+        if image:
+            article_object=NewsArticle(source,author,title,url,image,description,published,content)
+
+            article_results.append(article_object)
+
+    return article_results
 
 def search_article(source):
     #function that returns search results from all news in api request
@@ -99,7 +142,7 @@ def search_article(source):
 
         if search_response['articles']:
             search_list=search_response['articles']
-            search_results=process_results(search_list)
+            search_results=process_article_results(search_list)
 
     return search_results
 

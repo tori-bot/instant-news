@@ -27,7 +27,7 @@ def article(source):
     author=f'{article.author} '
     image=f'{article.image} '
     content=f'{article.content} '
-    published=f'{article.created_at} '
+    published=f'{article.published} '
 
     return render_template('article.html',title=title,author=author,image=image,content=content,published=published)
 
@@ -38,7 +38,7 @@ def source(source):
     title=f'{article.title} '
     image=f'{article.image} '
     description=f'{article.description} '
-    published=f'{article.created_time} '
+    published=f'{article.published} '
 
     return render_template('source.html',title=title,image=image,description=description,published=published)
 
