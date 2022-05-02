@@ -41,4 +41,13 @@ def source(source):
 
     return render_template('source.html',title=title,image=image,description=description)
 
+@main.route('/search/<source>')
+def search(source):
+    #function to view search results
+    news_list=source.split(' ')
+    source_format='+'.join(news_list)
+    searched_news=search_article(source_format)
 
+    title=f'search results for {source} '
+
+    return render_template('search.html',articles=searched_news)
