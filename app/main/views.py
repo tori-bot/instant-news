@@ -18,3 +18,17 @@ def index():
         return redirect(url_for('.search',source=search_article))
     else:
         return render_template('index.html',title=title,trending_news=trending_news,popular_sources=popular_sources)
+
+@main.route('/news/<source>')
+def article(source):
+    #view article page function
+    article=get_article(source)
+    title=f'{article.title} '
+    author=f'{article.author} '
+    image=f'{article.image} '
+    content=f'{article.content} '
+    published=f'{article.created_at} '
+
+    return render_template('article.html',title=title,author=author,image=image,content=content,published=published)
+
+
