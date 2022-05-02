@@ -45,3 +45,17 @@ def process_results(sources_list):
             sources_results.append(source)
 
         return sources_results
+
+def get_article(index):
+    #function to get a specific article
+    get_article_url=base_url.format(index,api_key)
+
+    with urllib.request.urlopen(get_article_url) as url:
+        article_data=url.read()
+        article_response=json.loads(article_data)
+
+        article=None
+
+        if article_response:
+            index=article_response.get('id')
+            
