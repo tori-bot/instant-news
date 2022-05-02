@@ -1,3 +1,4 @@
+from unicodedata import category
 import urllib.request,json
 from .models import NewsSource
 
@@ -23,4 +24,24 @@ def get_sources(sources):
         if get_sources_response['sources']:
             news_sources_list=get_sources_response['sources']
             sources_results=process_results(news_sources_list)
+        return sources_results
+
+def process_results(sources_list):
+    #function processes seources results and transforns them to a list of objects
+    sources_results=[]
+
+    for source in sources_list:
+        index=source.get('id')
+        org_name=source.get('name')
+        description=source.get('description')
+        url=source.get('url')
+        category=source.get('category')
+        language=source.get('language')
+        country=source.get('country')
+
+        if url:
+            source=NewsSource(index,org_name,description,url,category,language,country)
+
+            sources_results.append(source)
+
         return sources_results
