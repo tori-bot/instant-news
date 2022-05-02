@@ -13,4 +13,18 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro displayArticlesOnSource() %}
+{% macro displayArticlesOnSource(article_list) %}
+      {% for article in article_list %}
+      <div class="card" style="width: 18rem;">
+        <img src="{{article.image}} " class="card-img-top" alt="{{article.title}} image ">
+        <div class="card-body">
+          <h3 class="card-title">{{article.title}} </h3>
+          <h4 class="author">{{article.author}} </h4>
+        
+          <p class="card-text">{{article.description|truncate(50)}} </p>
+          <p class="card-text"><small class="text-muted"> Published on {{article.published}} </small></p>
+          <a href="{{article.url}} " class="btn btn-primary">Read more</a>
+        </div>
+      </div>
+      {% endfor %}
+{% endmacro %}
