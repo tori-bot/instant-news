@@ -38,8 +38,9 @@ def source(source):
     title=f'{article.title} '
     image=f'{article.image} '
     description=f'{article.description} '
+    published=f'{article.created_time} '
 
-    return render_template('source.html',title=title,image=image,description=description)
+    return render_template('source.html',title=title,image=image,description=description,published=published)
 
 @main.route('/search/<source>')
 def search(source):
