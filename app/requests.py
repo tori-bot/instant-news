@@ -46,6 +46,23 @@ def process_results(sources_list):
 
         return sources_results
 
+def get_trending(source):
+    #function to get trending news in specific country
+    get_trending_url='https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key,source)
+
+    with urllib.request.urlopen(get_trending_url) as url:
+        get_trending_data=url.read()
+        get_trending_response=json.loads(get_trending_data)
+
+        trending_results=None
+
+        if get_trending_response['articles']:
+            trending_list=get_trending_response['articles']
+            trending_results=process_results(trending_list)
+
+    return trending_results
+
+
 def get_article(source):
     #function to get a specific article
     get_article_url=base_url.format(source,api_key)
@@ -84,5 +101,5 @@ def search_article(source):
             search_list=search_response['articles']
             search_results=process_results(search_list)
 
-        return search_results
+    return search_results
 
