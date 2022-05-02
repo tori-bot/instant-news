@@ -19,3 +19,8 @@ def get_sources(sources):
         get_sources_response=json.loads(get_sources_data)
 
         sources_results=None
+
+        if get_sources_response['sources']:
+            news_sources_list=get_sources_response['sources']
+            sources_results=process_results(news_sources_list)
+        return sources_results
