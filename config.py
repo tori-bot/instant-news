@@ -2,7 +2,7 @@ import os
 
 class Config:
     #generate configuraion parent class
-    API_BASE_URL='https://newsapi.org/v2/everything?q=Kenya&sortBy=popularity&apiKey={}'
+    API_BASE_URL='https://newsapi.org/v2/everything?q=Worldwide&sortBy=popularity&apiKey={}'
     API_KEY=os.environ.get('API_KEY')
 
 class ProdConfig(Config):

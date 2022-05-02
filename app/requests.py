@@ -46,9 +46,9 @@ def process_results(sources_list):
 
         return sources_results
 
-def get_article(author):
+def get_article(source):
     #function to get a specific article
-    get_article_url=base_url.format(author,api_key)
+    get_article_url=base_url.format(source,api_key)
 
     with urllib.request.urlopen(get_article_url) as url:
         article_data=url.read()
@@ -57,15 +57,32 @@ def get_article(author):
         article=None
 
         if article_response:
+            source=article_response.get('source')
             author=article_response.get('author')
-            title=article.get('title')
-            description=article.get('description')
-            url=article.get('url')
-            image=article.get('urlToImage')
-            content=article.get('content')
-            created_at =article.get('publishedAt')
+            title=article_response.get('title')
+            description=article_response.get('description')
+            url=article_response.get('url')
+            image=article_response.get('urlToImage')
+            content=article_response.get('content')
+            created_at =article_response.get('publishedAt')
 
-            article=NewsArticle(author,title,url,image,description,created_at,content)
+            article=NewsArticle(source,author,title,url,image,description,created_at,content)
 
         return article
+
+def search_article(source):
+    #function that returns search results from all news in api request
+    search_url='https://newsapi.org/v2/top-headlines?&apiKey={}'.format(api_key,source)
+
+    with urllib.request.urlopen(search_url) as url:
+        search_data=url.read()
+        search_response=json.loads(search_data)
+
+        search_results=None
+
+        if search_response['articles']:
+            search_list=search_response['articles']
+            search_results=process_results(search_list)
+
+        return search_results
 

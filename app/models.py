@@ -15,7 +15,8 @@ class NewsSource:
 
 class NewsArticle:
     #class that defines news article objects
-    def __init__(self,author,title,url,image,description,created_time,content):
+    def __init__(self,source,author,title,url,image,description,created_time,content):
+        self.source=source
         self.author=author
         self.title=title
         self.url=url
