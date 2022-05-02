@@ -1,7 +1,7 @@
 from ensurepip import bootstrap
-from flask import Blueprint
+from flask import Blueprint, Flask
+from config import config_options
 main=Blueprint('main',__name__)
-
 from . import views,errors
 
 def create_app(config_name):
