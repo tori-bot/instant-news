@@ -1,6 +1,6 @@
 from unicodedata import category
 import urllib.request,json
-from .models import NewsSource
+from .models import NewsArticle, NewsSource
 
 api_key=None
 base_url=None
@@ -46,9 +46,9 @@ def process_results(sources_list):
 
         return sources_results
 
-def get_article(index):
+def get_article(author):
     #function to get a specific article
-    get_article_url=base_url.format(index,api_key)
+    get_article_url=base_url.format(author,api_key)
 
     with urllib.request.urlopen(get_article_url) as url:
         article_data=url.read()
@@ -57,5 +57,15 @@ def get_article(index):
         article=None
 
         if article_response:
-            index=article_response.get('id')
-            
+            author=article_response.get('author')
+            title=article.get('title')
+            description=article.get('description')
+            url=article.get('url')
+            image=article.get('urlToImage')
+            content=article.get('content')
+            created_at =article.get('publishedAt')
+
+            article=NewsArticle(author,title,url,image,description,created_at,content)
+
+        return article
+
