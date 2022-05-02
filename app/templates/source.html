@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block content %}
+<h2>Articles </h2>
+<ul>
+    {{macro.displayArticlesOnSource()}}
+</ul>
+
+{% endblock %}
