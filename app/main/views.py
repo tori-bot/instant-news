@@ -50,4 +50,4 @@ def search(source):
 
     title=f'search results for {source} '
 
-    return render_template('search.html',articles=searched_news)
+    return render_template('search.html',articles=searched_news,title=title)
