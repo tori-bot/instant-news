@@ -6,9 +6,9 @@ from ..models import NewsArticle, NewsSource
 #views
 @main.route('/')
 def index():
-    # view root page function
+    # function to view root page
     trending_news=get_trending('source')
-    popular_sources=get_sources('source')
+    popular_sources=get_sources()
 
     title='Home of Instant News'
 
@@ -21,7 +21,7 @@ def index():
 
 @main.route('/news/<source>')
 def article(source):
-    #view article page function
+    #function to view article page 
     article=get_article(source)
     title=f'{article.title} '
     author=f'{article.author} '
@@ -30,5 +30,15 @@ def article(source):
     published=f'{article.created_at} '
 
     return render_template('article.html',title=title,author=author,image=image,content=content,published=published)
+
+@main.route('/news/<source>')
+def source(source):
+    #function to view articles of one source
+    source=get_article(source)
+    title=f'{article.title} '
+    image=f'{article.image} '
+    description=f'{article.description} '
+
+    return render_template('source.html',title=title,image=image,description=description)
 
 

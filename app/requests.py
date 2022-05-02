@@ -11,9 +11,9 @@ def configure_request(app):
     api_key=app.config['API_KEY']
     base_url=app.config['BASE_URL']
 
-def get_sources(sources):
+def get_sources():
     #this function with arg:sources gets json response to our url request
-    get_sources_url=base_url.format(sources,api_key)
+    get_sources_url='https://newsapi.org/v2/top-headlines/sources?apiKey={}'.format(api_key)
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data=url.read()
@@ -48,7 +48,7 @@ def process_results(sources_list):
 
 def get_trending(source):
     #function to get trending news in specific country
-    get_trending_url='https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key,source)
+    get_trending_url='https://newsapi.org/v2/top-headlines?q={}&apiKey={}'.format(source,api_key)
 
     with urllib.request.urlopen(get_trending_url) as url:
         get_trending_data=url.read()
@@ -89,7 +89,7 @@ def get_article(source):
 
 def search_article(source):
     #function that returns search results from all news in api request
-    search_url='https://newsapi.org/v2/top-headlines?&apiKey={}'.format(api_key,source)
+    search_url='https://newsapi.org/v2/top-headlines?q={}&apiKey={}'.format(source,api_key)
 
     with urllib.request.urlopen(search_url) as url:
         search_data=url.read()
