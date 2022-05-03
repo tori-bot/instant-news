@@ -5,7 +5,7 @@
 An application that consumes a news API to bring you the most recent news in an efficient and stylistically packaged UI.
 
 # Live link
-
+https://instant-news.herokuapp.com/
 
 # Features
 * A landing page with a list of some of the most popular news publishers and current trending news articles.
