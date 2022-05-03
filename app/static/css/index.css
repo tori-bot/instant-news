@@ -1,0 +1,15 @@
+.sources{
+margin-bottom: 5vh;
+}
+
+.articles{
+    margin: 5rem;
+}
+.card-img-top{
+    object-fit: cover;
+}
+.search{
+    margin-left: 25vw;
+    width:20vw;
+    background-color: aqua;
+}

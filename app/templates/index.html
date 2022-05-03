@@ -10,15 +10,16 @@
 
 {% block content %}
 <!-- search form -->
-<div class="container">
+<div class="container search" style="margin-left: 25vw;
+width:20vw;">
     <form>
-        <input type="text" name="news_query" placeholder="Search for a Movie" class="form-control">
+        <input type="text" name="news_query" placeholder="Search for news" class="form-control">
         <input type="submit"  value="Search" class="btn btn-default" >
     </form>
 
 </div>
-<div class="container row">
-
+<div class="container">
+<div class="row">
     <div class="col-md-4 sources">
     <h2>News sources</h2>
     <ul>{{macro.displaySources(popular_sources)}} </ul>
@@ -27,7 +28,8 @@
     <h2>Trending news </h2>
     <ul>{{macro.displayTrendingNews(trending_news)}}</ul>
     </div>
-
+</div>
+    
 </div>
 
 

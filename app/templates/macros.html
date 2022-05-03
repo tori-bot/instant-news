@@ -2,9 +2,10 @@
 
     {% for source in popular_sources %}
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 18rem; ">
         <div class="card-body">
-          <h3 class="card-title"> {{source.title}} | {{source.category}} </h3>
+          <h3 class="card-title"> {{source.org_name}} </h3>
+          <p><small class="text-muted">{{source.category}}  </small></p>
           <p class="card-text"> {{source.description}} </p>
           <a href="/source/{{source.index}} " target="blank" class="btn btn-primary">Explore</a>
         </div>
@@ -14,15 +15,15 @@
 
 {% macro displayArticlesOnSource(article_list) %}
       {% for article in article_list %}
-      <div class="card" style="width: 18rem;">
-        <img src="{{article.image}} " class="card-img-top" alt="{{article.title}} image ">
+      <div class="card col-md-3 articles" style="height: 80vh; width: 27vw; color: white; background-color: black; margin:1rem; border-radius: 7px; text-align: center;" >
+        <img src="{{article.image}} " class="card-img-top img-responsive" style="object-fit: cover; margin-top: 2vh; " alt="{{article.title}} image ">
         <div class="card-body">
           <h3 class="card-title">{{article.title}} </h3>
           <h4 class="author">{{article.author}} </h4>
         
-          <p class="card-text">{{article.description|truncate(50)}} </p>
+          <p class="card-text">{{article.description}} </p>
           <p class="card-text"><small class="text-muted"> Published on {{article.published}} </small></p>
-          <a href="{{article.url}} " target="blank" class="btn btn-primary">Read more</a>
+          <a href="{{article.url}} " target="blank" class="btn btn-primary" style="margin-bottom: 3vh;">Read more</a>
         </div>
       </div>
       {% endfor %}
@@ -30,12 +31,12 @@
 
 {% macro displayTrendingNews(trending_list) %}
       {% for trending in trending_list %}
-      <div class="card" style="width: 18rem;">
-        <img src="{{trending.image}} " class="card-img-top" alt="{{trending.title}} image">
+      <div class="card col-md-6" >
+        <img src="{{trending.image}} " class="card-img-top img-responsive" alt="{{trending.title}} image">
         <div class="card-body">
           <h3 class="card-title">{{trending.title}} </h3>
           <h4 class="author">{{trending.author}} </h4>
-          <p class="card-text">{{trending.description|truncate(30)}} </p>
+          <p class="card-text">{{trending.description}} </p>
           <a href="{{trending.url}} " target="blank" class="btn btn-primary">Read more</a>
         </div>
       </div>

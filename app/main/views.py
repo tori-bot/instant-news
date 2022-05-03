@@ -23,24 +23,9 @@ def index():
 def article(source):
     #function to view article page 
     articles=get_articles(source)
-    # title=f'{articles.title} '
-    # author=f'{article.author} '
-    # image=f'{article.image} '
-    # content=f'{article.content} '
-    # published=f'{article.published} '
-
+    
+   
     return render_template('source.html',articles=articles)
-
-# @main.route('/source/<source>')
-# def source(source):
-#     #function to view articles of one source
-#     source=get_article(source)
-#     title=f'{article.title} '
-#     image=f'{article.image} '
-#     description=f'{article.description} '
-#     published=f'{article.published} '
-
-#     return render_template('source.html',title=title,image=image,description=description,published=published)
 
 @main.route('/search/<source>')
 def search(source):

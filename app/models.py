@@ -3,12 +3,12 @@ from unicodedata import name
 
 class NewsSource:
     #clas that defines news source objects
-    def __init__(self,index,org_name,description,category,url,language,country):
+    def __init__(self,index,org_name,description,url,category,language,country):
         self.index=index
         self.org_name=org_name
         self.description=description
-        self.category=category
         self.url=url
+        self.category=category
         self.language=language
         self.country=country
 
