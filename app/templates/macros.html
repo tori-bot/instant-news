@@ -2,11 +2,11 @@
 
     {% for source in popular_sources %}
 
-    <div class="card col-md-3" style="width: 17vw; height:40vh; margin-right: 1vw; margin-bottom: 3vh;  color: white; background-color: black; border-radius: 6px;">
+    <div class="card col-md-3" style="width: 17vw; height:25vh; margin-right: 1vw; margin-bottom: 3vh;  color: white; background-color: black; border-radius: 6px;">
         <div class="card-body">
           <h3 class="card-title"> {{source.org_name}} </h3>
           <p><small class="text-muted">{{source.category}}  </small></p>
-          <p class="card-text"> {{source.description|truncate(120)}} </p>
+          <!-- <p class="card-text"> {{source.description|truncate(120)}} </p> -->
           <a href="/source/{{source.index}} " target="blank" style="margin-left: 5vw; background-color: transparent; color: white; border: solid 2px white;" class="btn ">Explore</a>
           
         </div>
