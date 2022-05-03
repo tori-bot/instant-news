@@ -9,11 +9,11 @@ def configure_request(app):
     #function to configure the  apirequests for the application
     global api_key,base_url
     api_key=app.config['API_KEY']
-    base_url=app.config['BASE_URL']
+    base_url=app.config['API_BASE_URL']
 
 def get_sources():
     #this function with arg:sources gets json response to our url request
-    get_sources_url='https://newsapi.org/v2/top-headlines/sources?apiKey={}'.format(api_key)
+    get_sources_url='https://newsapi.org/v2/top-headlines/sources?&language=en&apiKey={}'.format(api_key)
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data=url.read()
@@ -39,16 +39,16 @@ def process_source_results(sources_list):
         language=source.get('language')
         country=source.get('country')
 
-        if url:
-            source=NewsSource(index,org_name,description,url,category,language,country)
+        # if url:
+        source=NewsSource(index,org_name,description,url,category,language,country)
 
-            sources_results.append(source)
+        sources_results.append(source)
 
     return sources_results
 
-def get_trending(source):
+def get_trending():
     #function to get trending news in specific country
-    get_trending_url='https://newsapi.org/v2/top-headlines?q={}&apiKey={}'.format(source,api_key)
+    get_trending_url='https://newsapi.org/v2/top-headlines?country=us&apiKey={}'.format(api_key)
 
     with urllib.request.urlopen(get_trending_url) as url:
         get_trending_data=url.read()
@@ -85,29 +85,20 @@ def process_trending_results(trending_list):
     return trending_results
 
 
-def get_article(source):
+def get_articles(source):
     #function to get a specific article
-    get_article_url=base_url.format(source,api_key)
+    get_article_url='https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(source,api_key)
 
     with urllib.request.urlopen(get_article_url) as url:
         article_data=url.read()
         article_response=json.loads(article_data)
 
-        article=None
+        articles=None
 
-        if article_response:
-            source=article_response.get('source')
-            author=article_response.get('author')
-            title=article_response.get('title')
-            description=article_response.get('description')
-            url=article_response.get('url')
-            image=article_response.get('urlToImage')
-            content=article_response.get('content')
-            published =article_response.get('publishedAt')
-
-            article=NewsArticle(source,author,title,url,image,description,published,content)
-
-        return article
+        if article_response['articles']:
+            articles=process_article_results(article_response['articles'])
+        
+        return articles
 
 def process_article_results(article_list):
     #function to process article results and add them to a list
@@ -132,7 +123,7 @@ def process_article_results(article_list):
 
 def search_article(source):
     #function that returns search results from all news in api request
-    search_url='https://newsapi.org/v2/top-headlines?q={}&apiKey={}'.format(source,api_key)
+    search_url='https://newsapi.org/v2/top-headlines?language=en&q={}&apiKey={}'.format(source,api_key)
 
     with urllib.request.urlopen(search_url) as url:
         search_data=url.read()

@@ -13,20 +13,20 @@
 <div class="container">
     <form>
         <input type="text" name="news_query" placeholder="Search for a Movie" class="form-control">
-        <input type="submit"  value="Submit" class="btn btn-default">
+        <input type="submit"  value="Search" class="btn btn-default" >
     </form>
 
 </div>
 <div class="container row">
-    <div class="col-md-4 trends">
-    <h2>Trending news </h2>
-    <ul>{{macro.displayTrendingNews()}}</ul>
-    </div>
 
-    <div class="col-md-8 sources">
+    <div class="col-md-4 sources">
     <h2>News sources</h2>
-    <ul>{{macro.displaySources()}} </ul>
-</div>
+    <ul>{{macro.displaySources(popular_sources)}} </ul>
+    </div>
+    <div class="col-md-8 trends">
+    <h2>Trending news </h2>
+    <ul>{{macro.displayTrendingNews(trending_news)}}</ul>
+    </div>
 
 </div>
 

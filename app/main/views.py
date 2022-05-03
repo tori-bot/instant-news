@@ -1,13 +1,13 @@
 from flask import render_template,request,redirect,url_for
 from . import main
-from ..requests import get_article,get_sources, get_trending,search_article
+from ..requests import get_articles,get_sources, get_trending,search_article
 from ..models import NewsArticle, NewsSource
 
 #views
 @main.route('/')
 def index():
     # function to view root page
-    trending_news=get_trending('source')
+    trending_news=get_trending()
     popular_sources=get_sources()
 
     title='Home of Instant News'
@@ -19,28 +19,28 @@ def index():
     else:
         return render_template('index.html',title=title,trending_news=trending_news,popular_sources=popular_sources)
 
-@main.route('/news/<source>')
+@main.route('/source/<source>')
 def article(source):
     #function to view article page 
-    article=get_article(source)
-    title=f'{article.title} '
-    author=f'{article.author} '
-    image=f'{article.image} '
-    content=f'{article.content} '
-    published=f'{article.published} '
+    articles=get_articles(source)
+    # title=f'{articles.title} '
+    # author=f'{article.author} '
+    # image=f'{article.image} '
+    # content=f'{article.content} '
+    # published=f'{article.published} '
 
-    return render_template('article.html',title=title,author=author,image=image,content=content,published=published)
+    return render_template('source.html',articles=articles)
 
-@main.route('/news/<source>')
-def source(source):
-    #function to view articles of one source
-    source=get_article(source)
-    title=f'{article.title} '
-    image=f'{article.image} '
-    description=f'{article.description} '
-    published=f'{article.published} '
+# @main.route('/source/<source>')
+# def source(source):
+#     #function to view articles of one source
+#     source=get_article(source)
+#     title=f'{article.title} '
+#     image=f'{article.image} '
+#     description=f'{article.description} '
+#     published=f'{article.published} '
 
-    return render_template('source.html',title=title,image=image,description=description,published=published)
+#     return render_template('source.html',title=title,image=image,description=description,published=published)
 
 @main.route('/search/<source>')
 def search(source):
