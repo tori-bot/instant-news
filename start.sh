@@ -1,4 +1,4 @@
-export API_KEY='e0a95f70604a41dc8e0d35cf0b1160dd'
+export API_KEY='be181f9e0db44fdbad152f0233ef01f0'
 
 export SECRET_KEY='tori-bot-secret'
 
