@@ -34,6 +34,6 @@ def search(source):
     source_format='+'.join(news_list)
     searched_news=search_article(source_format)
 
-    title=f'search results for {source} '
+    title=f' {source} '
 
     return render_template('search.html',articles=searched_news,title=title)

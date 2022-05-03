@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h2>Found {{articles|count}} matches</h2>
+<div class="container row" style=" width: 100%; ">
+    <h2>Found {{articles|count}} matches for {{title}} </h2>
     <hr>
-    <ul>
+    <ul style="margin-left: 3vw;">
         {{macro.displayArticlesOnSource(articles)}}
     </ul>
 </div>

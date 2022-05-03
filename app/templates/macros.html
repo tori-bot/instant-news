@@ -2,12 +2,13 @@
 
     {% for source in popular_sources %}
 
-    <div class="card" style="width: 18rem; ">
+    <div class="card col-md-3" style="width: 17vw; height:40vh; margin-right: 1vw; margin-bottom: 3vh;  color: white; background-color: black; border-radius: 6px;">
         <div class="card-body">
           <h3 class="card-title"> {{source.org_name}} </h3>
           <p><small class="text-muted">{{source.category}}  </small></p>
-          <p class="card-text"> {{source.description}} </p>
-          <a href="/source/{{source.index}} " target="blank" class="btn btn-primary">Explore</a>
+          <p class="card-text"> {{source.description|truncate(120)}} </p>
+          <a href="/source/{{source.index}} " target="blank" style="margin-left: 5vw; background-color: transparent; color: white; border: solid 2px white;" class="btn ">Explore</a>
+          
         </div>
       </div>
     {% endfor %}
@@ -18,10 +19,10 @@
       <div class="card col-md-3 articles" style="height: 80vh; width: 27vw; color: white; background-color: black; margin:1rem; border-radius: 7px; text-align: center;" >
         <img src="{{article.image}} " class="card-img-top img-responsive" style="object-fit: cover; margin-top: 2vh; " alt="{{article.title}} image ">
         <div class="card-body">
-          <h3 class="card-title">{{article.title}} </h3>
-          <h4 class="author">{{article.author}} </h4>
+          <h3 class="card-title">{{article.title|truncate(50)}} </h3>
+          <h4 class="author" style="font-style: italic;">{{article.author}} </h4>
         
-          <p class="card-text">{{article.description}} </p>
+          <p class="card-text">{{article.description|truncate(140)}} </p>
           <p class="card-text"><small class="text-muted"> Published on {{article.published}} </small></p>
           <a href="{{article.url}} " target="blank" class="btn btn-primary" style="margin-bottom: 3vh;">Read more</a>
         </div>
@@ -31,12 +32,12 @@
 
 {% macro displayTrendingNews(trending_list) %}
       {% for trending in trending_list %}
-      <div class="card col-md-6" >
-        <img src="{{trending.image}} " class="card-img-top img-responsive" alt="{{trending.title}} image">
+      <div class="card col-md-4" style="height: 80vh; width: 22vw; margin: 1vw; border-radius: 7px; text-align: center; border:solid 2px black;" >
+        <img src="{{trending.image}} " style="margin-top:2vh; object-fit:cover;" class="card-img-top img-responsive" alt="{{trending.title}} image">
         <div class="card-body">
-          <h3 class="card-title">{{trending.title}} </h3>
-          <h4 class="author">{{trending.author}} </h4>
-          <p class="card-text">{{trending.description}} </p>
+          <h3 class="card-title">{{trending.title|truncate(50)}} </h3>
+          <h4 class="author" style="font-style: italic;">{{trending.author}} </h4>
+          <p class="card-text">{{trending.description|truncate(150)}} </p>
           <a href="{{trending.url}} " target="blank" class="btn btn-primary">Read more</a>
         </div>
       </div>

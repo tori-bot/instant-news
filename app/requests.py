@@ -134,6 +134,7 @@ def search_article(source):
         if search_response['articles']:
             search_list=search_response['articles']
             search_results=process_article_results(search_list)
+        
 
     return search_results
 

@@ -10,31 +10,40 @@
 
 {% block content %}
 <!-- search form -->
-<div class="container search" style="margin-left: 25vw;
-width:20vw;">
+<div class="container search" style="margin-left: 40vw;
+width:50vw;">
     <form>
-        <input type="text" name="news_query" placeholder="Search for news" class="form-control">
-        <input type="submit"  value="Search" class="btn btn-default" >
+        <div class="row">
+            <div class="col-md-8">
+               <input type="text" name="news_query" placeholder="Search for news" class="form-control"> 
+            </div>
+            <div class="col-md-4">
+                <input type="submit"  value="Search" class="btn btn-default" >
+            </div>
+        </div>    
     </form>
 
 </div>
-<div class="container">
+<div class="container" style=" width: 100%;">
 <div class="row">
-    <div class="col-md-4 sources">
-    <h2>News sources</h2>
-    <ul>{{macro.displaySources(popular_sources)}} </ul>
-    </div>
-    <div class="col-md-8 trends">
-    <h2>Trending news </h2>
+    <div class="col-md-4 trends">
+    <h2 style="text-align: center;font-weight: bold;">Trending news </h2>
+    <hr>
     <ul>{{macro.displayTrendingNews(trending_news)}}</ul>
     </div>
+    <div class="col-md-8 sources">
+    <h2 style="text-align: center;font-weight: bold;">News sources</h2>
+    <hr>
+    <ul>{{macro.displaySources(popular_sources)}} </ul>
+    </div>
+    
 </div>
     
 </div>
 
 
-<div class="contacts">
-<p>socials</p>
+<div class="contacts" style="text-align: center;">
+
 <footer>copyright 2022 Victoria Makena</footer>
 </div>
 
