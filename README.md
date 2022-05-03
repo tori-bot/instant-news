@@ -11,14 +11,14 @@ An application that consumes a news API to bring you the most recent news in an 
 * A navigation bar with a link to navigate back to the landing page.
 
 # Behaviour Driven Development
-BEHAVIOUR
+### BEHAVIOUR
 The page loads up and shows various news sources and highlights of trending news articles.
 
-INPUT
+### INPUT
 On the landing page the user can click the explore button to view news articles from a particular source.
 The user can search for news on search bar.
 
-OUTPUT
+### OUTPUT
 The articles from the selected source are displayed with a 'read more' button to read full article on the source's website.
 Search results (articles) are displayed for further exploration.
 
