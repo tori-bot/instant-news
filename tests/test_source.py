@@ -7,4 +7,4 @@ class SourceTest(unittest.Testcase):
         #method to run before every test
         self.new_source=NewsSource('1234','bbc','we live for news','general','www.bbc.com','en','uk')
 
-        
+    def test_instance(self):      
