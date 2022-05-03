@@ -1,9 +1,11 @@
 # Instant News
 ![Instant News Landing page](app/static/images/Screenshot_2022-05-03_16-39-51.png)
+# Author - Victoria Makena
 # Description
 An application that consumes a news API to bring you the most recent news in an efficient and stylistically packaged UI.
 
-# Author - Victoria Makena
+# Live link
+
 
 # Features
 * A landing page with a list of some of the most popular news publishers and current trending news articles.
