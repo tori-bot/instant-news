@@ -87,7 +87,7 @@ def process_trending_results(trending_list):
 
 def get_articles(source):
     #function to get a specific article
-    get_article_url='https://newsapi.org/v2/top-headlines?&pageSize=10&sources={}&apiKey={}'.format(source,api_key)
+    get_article_url='https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'.format(source,api_key)
 
     with urllib.request.urlopen(get_article_url) as url:
         article_data=url.read()
